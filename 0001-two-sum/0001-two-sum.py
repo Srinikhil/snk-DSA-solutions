@@ -6,4 +6,17 @@ class Solution:
             for j in range(i+1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return [i, j]
+                
+                
+        # approach 2
+        
+        storeMap = {}
+        for i in range(0, len(nums)):
+            diff = target - nums[i]
+            if diff in storeMap:
+                return [storeMap[diff], i]
+            else:
+                storeMap[nums[i]] = i
+                
+
 
