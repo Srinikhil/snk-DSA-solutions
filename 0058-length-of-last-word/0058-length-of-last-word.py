@@ -21,10 +21,19 @@ class Solution:
                 
 #         return reqWordCount
 
+# Approach using split()
 
-        wordBag = s.split()
-        return len(wordBag[-1])
-
+        # wordBag = s.split()
+        # return len(wordBag[-1])
+        i = len(s) - 1
+        reqWordCount = 0
+        while i>=0 and s[i] == ' ':
+            i -= 1
+        while i>=0 and s[i] != ' ':
+            reqWordCount += 1
+            i -= 1
+        
+        return reqWordCount
     
     
 
