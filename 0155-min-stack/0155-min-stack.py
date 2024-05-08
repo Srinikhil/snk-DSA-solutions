@@ -9,13 +9,18 @@ class MinStack(object):
         :type val: int
         :rtype: None
         """
-        if len(self.stack) == 0:
-            self.min.append(val)
-        if val < self.min[-1] and len(self.stack) > 0:
-            self.min.append(val)
-        else:
-            self.min.append(self.min[-1])
         self.stack.append(val)
+        
+        # if len(self.stack) == 0:
+        #     self.min.append(val)
+        # if val < self.min[-1] and len(self.stack) > 0:
+        #     self.min.append(val)
+        # else:
+        #     self.min.append(self.min[-1])
+        
+        val = min(val, self.min[-1] if self.min else val)
+        self.min.append(val)
+        
         return
         
         
