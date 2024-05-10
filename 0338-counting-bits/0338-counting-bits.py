@@ -31,7 +31,8 @@ class Solution(object):
                 bitCounts.append(1)
                 latest2n = i
             else:
-                bitCounts.append(bitCounts[latest2n] + bitCounts[i - latest2n])
+                # bitCounts.append(bitCounts[latest2n] + bitCounts[i - latest2n])
+                bitCounts.append(bitCounts[i - latest2n]+1)
 
                 
         return bitCounts
