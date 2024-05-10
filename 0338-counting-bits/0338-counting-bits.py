@@ -24,6 +24,7 @@ class Solution(object):
 
 
         bitCounts = [0]
+        # latest2n = 0
         latest2n = 1
         
         for i in range(1, n+1):
