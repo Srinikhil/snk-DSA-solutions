@@ -28,8 +28,9 @@ class Solution(object):
         latest2n = 1
         
         for i in range(1, n+1):
-            # if i and (not (i & (i-1))):
-            if latest2n * 2 == i:
+            # To keep an offset at power of 2
+            if i and (not (i & (i-1))):
+            # if latest2n * 2 == i:
                 bitCounts.append(1)
                 latest2n = i
             else:
