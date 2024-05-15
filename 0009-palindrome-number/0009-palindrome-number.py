@@ -4,14 +4,35 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
-        x = str(x)
-        i = 0
-        j = len(x) - 1
-        while i <= j:
-            if x[i] != x[j]:
-                return False
-            i += 1
-            j -= 1
+        
+        # Using Type conversion
+#         x = str(x)
+#         i = 0
+#         j = len(x) - 1
+#         while i <= j:
+#             if x[i] != x[j]:
+#                 return False
+#             i += 1
+#             j -= 1
             
-        return True
+#         return True
+        
+        arr = []
+
+        if x < 0:
+            return False
+        else:
+            while x > 0:
+                arr.append(x%10)
+                x = x // 10
+                
+            i = 0
+            j = len(arr) - 1
+            while i <= j:
+                if arr[i] != arr[j]:
+                    return False
+                i += 1
+                j -= 1
+                
+            return True
         
