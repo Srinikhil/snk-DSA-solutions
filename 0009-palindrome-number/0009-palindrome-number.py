@@ -17,22 +17,32 @@ class Solution(object):
             
 #         return True
         
-        arr = []
+    # Approach - 2
+#         arr = []
+
+#         if x < 0:
+#             return False
+#         else:
+#             while x > 0:
+#                 arr.append(x%10)
+#                 x = x // 10
+                
+#             i = 0
+#             j = len(arr) - 1
+#             while i <= j:
+#                 if arr[i] != arr[j]:
+#                     return False
+#                 i += 1
+#                 j -= 1
+                
+#             return True
 
         if x < 0:
             return False
         else:
-            while x > 0:
-                arr.append(x%10)
-                x = x // 10
-                
-            i = 0
-            j = len(arr) - 1
-            while i <= j:
-                if arr[i] != arr[j]:
-                    return False
-                i += 1
-                j -= 1
-                
+            x = str(x)
+            if x != x[::-1]:
+                return False
             return True
+    
         
