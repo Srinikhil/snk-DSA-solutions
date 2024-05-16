@@ -43,53 +43,53 @@ class Solution(object):
 #         return trappedWater
 
         # Another approach with TC - O(n), SC - O(n)
-        trappedWater = 0
+#         trappedWater = 0
         
-        lmaxArr = [0]*len(height)
-        rmaxArr = [0]*len(height)
+#         lmaxArr = [0]*len(height)
+#         rmaxArr = [0]*len(height)
         
-        lmax = 0
-        rmax = 0
+#         lmax = 0
+#         rmax = 0
         
-        for i in range(len(height)):
-            if height[i] > lmax:
-                lmax = height[i]
-            lmaxArr[i] = lmax
+#         for i in range(len(height)):
+#             if height[i] > lmax:
+#                 lmax = height[i]
+#             lmaxArr[i] = lmax
             
-        for i in range(len(height)-1, -1, -1):
-            if height[i] > rmax:
-                rmax = height[i]
-            rmaxArr[i] = rmax    
+#         for i in range(len(height)-1, -1, -1):
+#             if height[i] > rmax:
+#                 rmax = height[i]
+#             rmaxArr[i] = rmax    
         
-        # print(lmaxArr)
-        # print(rmaxArr)
+#         # print(lmaxArr)
+#         # print(rmaxArr)
         
-        for i in range(len(height)):
-            trappedWater += min(lmaxArr[i], rmaxArr[i]) - height[i]
+#         for i in range(len(height)):
+#             trappedWater += min(lmaxArr[i], rmaxArr[i]) - height[i]
             
-        return trappedWater
+#         return trappedWater
     
 
         # Using 2 pointer TC - O(n), SC - O(1)
-#         trappedWater = 0
-#         lh = 0
-#         rh = len(height) - 1
-#         lmax = height[lh]
-#         rmax = height[rh]
+        trappedWater = 0
+        lh = 0
+        rh = len(height) - 1
+        lmax = height[lh]
+        rmax = height[rh]
         
-#         while lh <= rh:
-#             if height[lh] <= height[rh]:
-#                 if height[lh] > lmax:
-#                     lmax = height[lh]
-#                 else:
-#                     trappedWater += lmax - height[lh]
-#                 lh += 1
+        while lh <= rh:
+            if height[lh] <= height[rh]:
+                if height[lh] > lmax:
+                    lmax = height[lh]
+                else:
+                    trappedWater += lmax - height[lh]
+                lh += 1
                     
-#             else:
-#                 if height[rh] > rmax:
-#                     rmax = height[rh]
-#                 else:
-#                     trappedWater += rmax - height[rh]
-#                 rh -= 1
+            else:
+                if height[rh] > rmax:
+                    rmax = height[rh]
+                else:
+                    trappedWater += rmax - height[rh]
+                rh -= 1
                 
-#         return trappedWater
+        return trappedWater
