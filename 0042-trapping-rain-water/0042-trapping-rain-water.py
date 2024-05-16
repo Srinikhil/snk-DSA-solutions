@@ -70,7 +70,7 @@ class Solution(object):
 #         return trappedWater
     
 
-        # Using 2 pointer TC - O(n), SC - O(1)
+        # Using 2 pointer TC - O(n), SC - O(1) 
         trappedWater = 0
         lh = 0
         rh = len(height) - 1
