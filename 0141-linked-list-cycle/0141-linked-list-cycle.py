@@ -9,9 +9,6 @@ class Solution(object):
         slow = head
         fast = head
         
-        # while slow != fast and fast.next != None:
-        #     slow = slow.next
-        #     fast = (fast.next).next
         
         while fast != None and fast.next != None:
             slow = slow.next
@@ -22,11 +19,6 @@ class Solution(object):
             
         return False
             
-        
-        # if fast == None:
-        #     return False
-        # else:
-        #     return True
                 
         
         
