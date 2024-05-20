@@ -39,7 +39,7 @@ class Solution(object):
         n = len(nums)
         for i in range(1, n):
             pick = nums[i]
-            if i > 0:
+            if i > 1:
                 pick += dp[i-2]
             
             notPick = 0 + dp[i-1]
@@ -49,10 +49,10 @@ class Solution(object):
         return dp[n-1]
 
         # Space Optimization TC - O(N), SC - O(1)
-#         dp1, dp2 = 0, 0
-#         for i in range(0, len(nums)):
+#         dp1, dp2 = nums[0], 0
+#         for i in range(1, len(nums)):
 #             pick = nums[i]
-#             if i > 0:
+#             if i > 1:
 #                 pick += dp1
 #             notPick = dp2
 #             dp1 = dp2
