@@ -32,18 +32,30 @@ class Solution(object):
 
 
 
-        # Tabulation approach
-        dp = [0]*len(nums)
-        dp[0] = nums[0]
+        # Tabulation approach, TC - O(N), SC - O(N) [No Auxilary or stack space needed for this approach as in memoization and recursion]
+#         dp = [0]*len(nums)
+#         dp[0] = nums[0]
         
-        n = len(nums)
-        for i in range(1, n):
+#         n = len(nums)
+#         for i in range(1, n):
+#             pick = nums[i]
+#             if i > 0:
+#                 pick += dp[i-2]
+            
+#             notPick = 0 + dp[i-1]
+            
+#             dp[i] = max(pick, notPick)
+        
+#         return dp[n-1]
+
+        # Space Optimization TC - O(N), SC - O(1)
+        dp1, dp2 = 0, 0
+        for i in range(0, len(nums)):
             pick = nums[i]
             if i > 0:
-                pick += dp[i-2]
+                pick += dp1
+            notPick = dp2
+            dp1 = dp2
+            dp2 = max(pick, notPick)
             
-            notPick = 0 + dp[i-1]
-            
-            dp[i] = max(pick, notPick)
-        
-        return dp[n-1]
+        return dp2
