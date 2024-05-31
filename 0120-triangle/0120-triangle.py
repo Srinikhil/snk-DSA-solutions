@@ -46,21 +46,21 @@ class Solution(object):
     
         # Space Optimization TC - O(N*N), SC - O(N)
         n = len(triangle)
-        prev = [0]*n
+        next = [0]*n
         
         # Base Case
         for j in range(n):
-            prev[j] = triangle[n-1][j]
+            next[j] = triangle[n-1][j]
             
         for i in range(n-2, -1, -1):
             cur = [0]*(i+1)
             for j in range(i, -1, -1):
-                down = triangle[i][j] + prev[j]
-                diag = triangle[i][j] + prev[j+1]
+                down = triangle[i][j] + next[j]
+                diag = triangle[i][j] + next[j+1]
                 cur[j] = min(down, diag)
-            prev = cur
+            next = cur
                 
-        return prev[0]
+        return next[0]
         
         
         
