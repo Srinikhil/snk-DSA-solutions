@@ -27,19 +27,40 @@ class Solution(object):
 #         return self.pathFun(0, 0, triangle, dp)
 
         # Tabulation TC - O(N*N), SC - O(N*N)
+#         n = len(triangle)
+#         dp = [[0]*n for _ in range(n)]
+        
+#         # Base Case
+#         for j in range(n):
+#             dp[n-1][j] = triangle[n-1][j]
+            
+#         for i in range(n-2, -1, -1):
+#             for j in range(i, -1, -1):
+#                 down = triangle[i][j] + dp[i+1][j]
+#                 diag = triangle[i][j] + dp[i+1][j+1]
+#                 dp[i][j] = min(down, diag)
+                
+#         return dp[0][0]
+    
+    
+    
+        # Space Optimization TC - O(N*N), SC - O(N)
         n = len(triangle)
-        dp = [[0]*n for _ in range(n)]
+        prev = [0]*n
         
         # Base Case
         for j in range(n):
-            dp[n-1][j] = triangle[n-1][j]
+            prev[j] = triangle[n-1][j]
             
         for i in range(n-2, -1, -1):
+            cur = [0]*(i+1)
             for j in range(i, -1, -1):
-                down = triangle[i][j] + dp[i+1][j]
-                diag = triangle[i][j] + dp[i+1][j+1]
-                dp[i][j] = min(down, diag)
+                down = triangle[i][j] + prev[j]
+                diag = triangle[i][j] + prev[j+1]
+                cur[j] = min(down, diag)
+            prev = cur
                 
-        return dp[0][0]
+        return prev[0]
+        
         
         
