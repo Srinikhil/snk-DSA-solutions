@@ -28,12 +28,13 @@ class Solution(object):
         # Optimized Approach TC - O(nlogn) + O(n)
         n = len(intervals)
         for i in range(n):
-            if mergedIntervals == []:
+            if mergedIntervals == [] or mergedIntervals[-1][1] < intervals[i][0]:
                 mergedIntervals.append(intervals[i])
-            if intervals[i][0] <= mergedIntervals[-1][1]:
-                mergedIntervals[-1][1] = max(mergedIntervals[-1][1], intervals[i][1])
+            # if intervals[i][0] <= mergedIntervals[-1][1]:
             else:
-                mergedIntervals.append(intervals[i])
+                mergedIntervals[-1][1] = max(mergedIntervals[-1][1], intervals[i][1])
+            # else:
+            #     mergedIntervals.append(intervals[i])
             
             
         
