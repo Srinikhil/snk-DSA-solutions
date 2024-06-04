@@ -8,36 +8,6 @@ class Solution(object):
         intervals.sort()
         mergedIntervals = []
         
-        # ip1 = 0
-        # ip2 = 1
-        # mip = 0
-        
-        
-        
-        # mergedIntervals.append(intervals[0])
-        
-#         while ip1 < len(intervals):
-#             start, end = intervals[ip1][0], intervals[ip1][1]
-#             if not mergedIntervals == [] and end <= mergedIntervals[-1][1]:
-#                     continue
-#             while ip2 < len(intervals):
-#                 if intervals[ip2][0] <= end:
-#                     end = max(end, intervals[ip2][1])
-#                     ip2 += 1
-#                 else:
-#                     break
-                    
-#             mergedIntervals.append([start, end])
-#             ip1 += 1
-#             ip2 = ip1+1
-#                     # if intervals[ip1][0] > mergedIntervals[mip][1]:
-#                     #     mergedIntervals.append(intervals[ip1])
-#                     #     mip += 1
-
-            
-            
-#         print(mergedIntervals)
-
 
         # Brute Force Approach
         # TC - O(nlogn) + O(2n)
@@ -55,22 +25,39 @@ class Solution(object):
         #     mergedIntervals.append([start, end])
             
             
-        # Optimized Approach
-        n = len(intervals)
-        for i in range(n):
-            # start = intervals[i][0]
-            # end = intervals[i][1]
+        # Optimized Approach TC - O(nlogn) + O(n)
+#         n = len(intervals)
+#         for i in range(n):
+#             # start = intervals[i][0]
+#             # end = intervals[i][1]
             
-            if mergedIntervals == []:
-                mergedIntervals.append(intervals[i])
-            if intervals[i][0] <= mergedIntervals[-1][1]:
-                mergedIntervals[-1][1] = max(mergedIntervals[-1][1], intervals[i][1])
-            else:
-                mergedIntervals.append(intervals[i])
+#             if mergedIntervals == []:
+#                 mergedIntervals.append(intervals[i])
+#             if intervals[i][0] <= mergedIntervals[-1][1]:
+#                 mergedIntervals[-1][1] = max(mergedIntervals[-1][1], intervals[i][1])
+#             else:
+#                 mergedIntervals.append(intervals[i])
             
             
 
+            
+        # intervals.sort()
+        n = len(intervals)
+        temp = n
+        
+        #for i in range(len(intervals) - 3):
+        i = 0
+        while i<temp-1:
+            if intervals[i][1] >= intervals[i+1][0] and intervals[i][0] <= intervals[i+1][0]:
+                intervals[i] = [intervals[i][0], max([intervals[i][1], intervals[i+1][1]])]
+                del intervals[i+1]
+            if temp == len(intervals):
+                i += 1
+            temp = len(intervals)
+        print(intervals)
+        
+        return intervals
 
 
         
-        return mergedIntervals
+        # return mergedIntervals
