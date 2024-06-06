@@ -1,0 +1,31 @@
+The reference solution approach is from:
+https://www.youtube.com/watch?v=caRzfb2lOpU&ab_channel=AshishKumar
+
+
+
+
+Notes:
+-----
+It uses bitwise to keep track of current sub array by calculation AND and trying to keep it closer to K
+based on the same elements are removed in the sub array.
+
+
+If a && b = ans
+then ans <= a, ans <= b
+so to decrease the value of ans AND can be done with some element x
+ans && x = res
+res <= ans,  res <= x
+
+This is because during AND operation all the bits can be same or few bits can be unset.
+
+
+
+so in the problem
+if cur > k in absolute it calculates cur - k
+to bring cur closer to k cur needs to decreased so more elements are added so that by overall AND operation value of cur(AND of sub-array) is decreased.
+
+if cur < k in absolute it calculates k-cur
+to bring cur closer to k, it needs to be increased so elements are removed.
+
+if cur == k then it is the absolute minimum which is 0
+so that'll be the result.
